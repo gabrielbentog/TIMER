@@ -1,9 +1,15 @@
-
+from time import sleep
 def linha(n):
+    """
+    Cria uma linha de tamanho 'n'
+    """
     print('\033[1;94m-\033[0;0m'*n) #Cria uma linha no terminal
 
 
 def titulo(msg):
+    """
+    Cria um título.
+    """
     linha(45)
     print("\033[1;94m", end='')
     print(f"{msg}".center(45)) #Faz um título centralizado
@@ -12,6 +18,9 @@ def titulo(msg):
 
 
 def menu(*opc):
+    """
+    Cria um menu com os ítens desejados.
+    """
     for c in range(0, len(opc)):
         print(f"\033[1;95m{c + 1}\033[0;0m - \033[1;94m{opc[c]}\033[0;0m")#Cria um menu com os parametros colocados.
     linha(45)
@@ -28,101 +37,114 @@ def menu(*opc):
     linha(45)
     return v
 
+
+##########################################
+
+#########################################
 def calcHora():
-    from time import sleep
-    tempo = float(input("\033[1;95mDigite o valor em hora: "))
-    segundos = int(tempo * 3600)
-    s = m = h =0
+    """
+    Calcula o timer em horas.
+    
+    """
+    Hours = float(input("\033[1;95mDigite o valor em hora: "))
+    seconds = int(Hours * 3600)
+    min = sec = hour = 0
     linha(45)
     while True:
-        if s == 60:
-            s -= 60
-            segundos -= 60
-            m += 1
-        if m == 60:
-            m -= 60
-            h += 1
-        if h < 10:
-            if s < 10:
-                if m < 10:
-                    print(f"\r0{h}:0{m}:0{s}", end='')
+        if sec == 60:
+            sec -= 60
+            seconds -= 60
+            min += 1
+        if min == 60:
+            min -= 60
+            hour += 1
+        if hour < 10: 
+            if sec < 10:
+                if min < 10:
+                    print(f"\r0{hour}:0{min}:0{sec}", end='')
                 else:
-                    print(f"\r0{h}:{m}:0{s}", end='')
+                    print(f"\r0{hour}:{min}:0{sec}", end='')
             else:
-                if m < 10:
-                    print(f"\r0{h}:0{m}:{s}", end='')
+                if min < 10:
+                    print(f"\r0{hour}:0{min}:{sec}", end='')
                 else:
-                    print(f"\r0{h}:{m}:{s}", end='')
+                    print(f"\r0{hour}:{min}:{sec}", end='')
         else:
-            if s < 10:
-                if m < 10:
-                    print(f"\r{h}:0{m}:0{s}", end='')
+            if sec < 10:
+                if min < 10:
+                    print(f"\r{hour}:0{min}:0{sec}", end='')
                 else:
-                    print(f"\r{h}:{m}:0{s}", end='')
+                    print(f"\r{hour}:{min}:0{sec}", end='')
             else:
-                if m < 10:
-                    print(f"\r{h}:0{m}:{s}", end='')
+                if min < 10:
+                    print(f"\r{hour}:0{min}:{sec}", end='')
                 else:
-                    print(f"\r{h}:{m}:{s}", end='')
-        s += 1
-        sleep(0.00000001)
-        if s > segundos:
+                    print(f"\r{hour}:{min}:{sec}", end='')
+        sec += 1
+        sleep(1)
+        if sec > seconds:
             break
     print()
     linha(45)
 
 
 def calcMin():
-    from time import sleep
-    tempo = float(input("\033[1;95mDigite o valor em minutos: "))
-    segundos = int(tempo * 60)
-    s = m = 0
+    """
+    Calcula o timer em minutos.
+    
+    """
+    minutes = float(input("\033[1;95mDigite o valor em minutos: "))
+    seconds = int(minutes * 60)
+    sec = min = 0
     linha(45)
     while True:
-        if s == 60:
-            s -= 60
-            segundos -= 60
-            m += 1
-        if s < 10:
-            if m < 10:
-                print(f"\r0{m}:0{s}", end='')
+        if sec == 60:
+            sec -= 60
+            seconds -= 60
+            min += 1
+        if sec < 10:
+            if min < 10:
+                print(f"\r0{min}:0{sec}", end='')
             else:
-                print(f"\r{m}:0{s}", end='')
+                print(f"\r{min}:0{sec}", end='')
         else:
-            if m < 10:
-                print(f"\r0{m}:{s}", end='')
+            if min < 10:
+                print(f"\r0{min}:{sec}", end='')
             else:
-                print(f"\r{m}:{s}", end='')
-        s += 1
+                print(f"\r{min}:{sec}", end='')
+        sec += 1
         sleep(1)
-        if s > segundos:
+        if sec > seconds:
             break
+    print()
     linha(45)
 
 
 def calcSeg():
-    from time import sleep
-    segundos = float(input("\033[1;95mDigite o valor em segundos: "))
-    s = m = 0
+    """
+    Calcula o timer em segundos
+    """
+    seconds = float(input("\033[1;95mDigite o valor em segundos: "))
+    sec = min = 0
     linha(45)
     while True:
-        if s == 60:
-            s -= 60
-            segundos -= 60
-            m += 1
-        if s < 10:
-            if m < 10:
-                print(f"\r0{m}:0{s}", end='')
+        if sec == 60:
+            sec -= 60
+            seconds -= 60
+            min += 1
+        if sec < 10:
+            if min < 10:
+                print(f"\r0{min}:0{sec}", end='')
             else:
-                print(f"\r{m}:0{s}", end='')
+                print(f"\r{min}:0{sec}", end='')
         else:
-            if m < 10:
-                print(f"\r0{m}:{s}", end='')
+            if min < 10:
+                print(f"\r0{min}:{sec}", end='')
             else:
-                print(f"\r{m}:{s}", end='')
-        s += 1
+                print(f"\r{min}:{sec}", end='')
+        sec += 1
         sleep(1)
-        if s > segundos:
+        if sec > seconds:
             break
     print()
     linha(45)
